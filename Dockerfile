@@ -1,14 +1,14 @@
-# Use lightweight OpenJDK 8 image
-FROM openjdk:8-jre-alpine
+# Use Eclipse Temurin Java 8 runtime
+FROM eclipse-temurin:8-jre-alpine
 
-# Create application directory
+# Set working directory
 WORKDIR /usr/app
 
-# Copy JAR file into container
+# Copy jar file into container
 COPY build/libs/my-app-1.0-SNAPSHOT.jar app.jar
 
 # Expose application port
 EXPOSE 8080
 
-# Start Spring Boot application
+# Run application
 ENTRYPOINT ["java", "-jar", "app.jar"]
