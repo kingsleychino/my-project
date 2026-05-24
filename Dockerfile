@@ -5,10 +5,10 @@ FROM eclipse-temurin:8-jre-alpine
 WORKDIR /usr/app
 
 # Copy jar file into container
-COPY build/libs/my-app-1.0-SNAPSHOT.jar app.jar
+COPY ./build/libs/my-app-1.0-SNAPSHOT.jar /usr/app/
 
 # Expose application port
 EXPOSE 8080
 
 # Run application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "my-app-1.0-SNAPSHOT.jar"]
