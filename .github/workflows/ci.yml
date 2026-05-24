@@ -1,8 +1,4 @@
 name: Java CI with Gradle
-
-# This workflow runs when:
-# 1. Code is pushed to main branch
-# 2. A pull request is opened against main
 on:
   push:
     branches: [ "main" ]
@@ -12,31 +8,19 @@ on:
 
 jobs:
   build:
-
-    # Use GitHub-hosted Ubuntu runner
     runs-on: ubuntu-latest
 
-    # Minimal permissions for security
-    permissions:
-      contents: read
-
     steps:
-
-      # Step 1: Download repository code
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      # Step 2: Install Java
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
         with:
-          distribution: 'temurin'   # REQUIRED
-          java-version: '17'
+          java-version: 1.8
 
-      # Step 3: Give execute permission to gradlew
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # Step 4: Build application
-      - name: Build with Gradle Wrapper
+      - name: Build with Gradle
         run: ./gradlew build
